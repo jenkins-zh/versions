@@ -11,7 +11,7 @@ spec:
       branch: master
       name: jenkins-versions
       provider: github
-  phase: draft
+  phase: ready
   repositories:
   - action: release
     address: https://github.com/jenkins-zh/jenkins-client
