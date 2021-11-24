@@ -1,8 +1,17 @@
 apiVersion: devops.kubesphere.io/v1alpha1
 kind: Releaser
 metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"devops.kubesphere.io/v1alpha1","kind":"Releaser","metadata":{"annotations":{},"labels":{"app.kubernetes.io/instance":"jenkins-zh"},"name":"jenkins-client-v0.0.6","namespace":"linuxsuren-bot"},"spec":{"gitOps":{"enable":true,"repository":{"address":"https://github.com/jenkins-zh/versions","branch":"master","name":"jenkins-versions","provider":"github"}},"phase":"ready","repositories":[{"action":"release","address":"https://github.com/jenkins-zh/jenkins-client","branch":"main","name":"jenkins-client","provider":"github","version":"v0.0.6"}],"secret":{"name":"linuxsuren-bot","namespace":"ks-releaser-system"},"version":"v0.0.6"}}
+    releaser.devops.kubesphere.io/hash: 5fd8744765
+  creationTimestamp: "2021-11-24T02:54:00Z"
+  generation: 2
+  labels:
+    app.kubernetes.io/instance: jenkins-zh
   name: jenkins-client-v0.0.6
   namespace: linuxsuren-bot
+  selfLink: /apis/devops.kubesphere.io/v1alpha1/namespaces/linuxsuren-bot/releasers/jenkins-client-v0.0.6
 spec:
   gitOps:
     enable: true
@@ -11,7 +20,8 @@ spec:
       branch: master
       name: jenkins-versions
       provider: github
-  phase: ready
+    secret: {}
+  phase: done
   repositories:
   - action: release
     address: https://github.com/jenkins-zh/jenkins-client
@@ -23,4 +33,8 @@ spec:
     name: linuxsuren-bot
     namespace: ks-releaser-system
   version: v0.0.6
-
+status:
+  conditions:
+  - conditionType: release
+    message: https://github.com/jenkins-zh/jenkins-client was released
+    status: success
