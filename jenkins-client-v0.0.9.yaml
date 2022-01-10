@@ -1,0 +1,30 @@
+apiVersion: devops.kubesphere.io/v1alpha1
+kind: Releaser
+metadata:
+  creationTimestamp: "2021-12-05T12:52:54Z"
+  labels:
+    app.kubernetes.io/instance: jenkins-zh
+  name: jenkins-client-v0.0.9
+  namespace: linuxsuren-bot
+spec:
+  gitOps:
+    enable: true
+    repository:
+      address: https://github.com/jenkins-zh/versions
+      branch: master
+      name: jenkins-versions
+      provider: github
+    secret: {}
+  phase: draft
+  repositories:
+  - action: release
+    address: https://github.com/jenkins-zh/jenkins-client
+    branch: main
+    name: jenkins-client
+    provider: github
+    version: v0.0.9
+  secret:
+    name: linuxsuren-bot
+    namespace: ks-releaser-system
+  version: v0.0.9
+status: {}
